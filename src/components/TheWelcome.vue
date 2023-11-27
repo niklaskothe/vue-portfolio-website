@@ -20,7 +20,6 @@ import SupportIcon from './icons/IconSupport.vue'
   </WelcomeItem>
 
 
-
   <div
     @dragover.prevent
     @dragenter.prevent
@@ -29,11 +28,12 @@ import SupportIcon from './icons/IconSupport.vue'
   >
     <p>Drag & Drop Bereich</p>
   </div>
-  <ul>
-    <li v-for="(file, index) in fileList" :key="index">
-      {{ file.name }}
-    </li>
-  </ul>
+  <div class="image-list">
+    <div v-for="(file, index) in fileList" :key="index" class="image-item">
+      <img :src="file.url" :alt="file.name" class="uploaded-image" />
+      <p>{{ file.name }}</p>
+    </div>
+  </div>
 </template>
 
 <script>
@@ -47,7 +47,16 @@ export default {
     handleDrop(event) {
       event.preventDefault();
       const files = event.dataTransfer.files;
-      this.fileList = [...this.fileList, ...files];
+      for (let i = 0; i < files.length; i++) {
+        const reader = new FileReader();
+        reader.onload = (e) => {
+          this.fileList.push({
+            name: files[i].name,
+            url: e.target.result,
+          });
+        };
+        reader.readAsDataURL(files[i]);
+      }
     },
   },
 };
@@ -59,5 +68,21 @@ export default {
   padding: 20px;
   text-align: center;
   cursor: pointer;
+}
+
+.image-list {
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 20px;
+}
+
+.image-item {
+  margin-right: 20px;
+  margin-bottom: 20px;
+}
+
+.uploaded-image {
+  width: 200px;
+  height: auto;
 }
 </style>
