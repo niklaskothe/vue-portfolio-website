@@ -1,27 +1,50 @@
 <script setup>
 import { RouterLink, RouterView } from 'vue-router'
 import HelloWorld from './components/HelloWorld.vue'
+import { ref } from 'vue'
+
+const height = ref('0%')
+const isOpened = ref(false)
+
+function toggleHamburger() {
+  isOpened.value = !isOpened.value
+}
+
+function toggleNav() {
+  toggleHamburger()
+  height.value = height.value === '0%' ? '100%' : '0%'
+}
+
+
 </script>
 
 <template>
   <header>
     <img alt="Vue logo" class="logo" src="@/assets/logo.svg" width="125" height="125" />
+    <HelloWorld msg="You did it!" />
 
-    <div class="wrapper">
-      <HelloWorld msg="You did it!" />
-
-      <nav>
-        <RouterLink to="/">Home</RouterLink>
-        <RouterLink to="/about">About</RouterLink>
-        <RouterLink to="/komponenten">Komponenten</RouterLink>
+    <div id="myNav" class="overlay" v-bind:style="{ height }">
+      <nav class="overlayContent">
+        <RouterLink @click="toggleNav" to="/">Home</RouterLink>
+        <RouterLink @click="toggleNav" to="/about">About</RouterLink>
+        <RouterLink @click="toggleNav" to="/komponenten">Komponenten</RouterLink>
       </nav>
+    </div>
+
+    <div class="hamburger" :class="{opened: isOpened}" @click="toggleNav">
+      <div class="bar1"></div>
+      <div class="bar2"></div>
+      <div class="bar3"></div>
     </div>
   </header>
 
-  <RouterView />
+    <RouterView />
+
 </template>
 
 <style scoped>
+/* Default Styles */
+/*------------------------------------*/
 header {
   line-height: 1.5;
   max-height: 100vh;
@@ -30,31 +53,6 @@ header {
 .logo {
   display: block;
   margin: 0 auto 2rem;
-}
-
-nav {
-  width: 100%;
-  font-size: 12px;
-  text-align: center;
-  margin-top: 2rem;
-}
-
-nav a.router-link-exact-active {
-  color: var(--color-text);
-}
-
-nav a.router-link-exact-active:hover {
-  background-color: transparent;
-}
-
-nav a {
-  display: inline-block;
-  padding: 0 1rem;
-  border-left: 1px solid var(--color-border);
-}
-
-nav a:first-of-type {
-  border: 0;
 }
 
 @media (min-width: 1024px) {
@@ -73,14 +71,82 @@ nav a:first-of-type {
     place-items: flex-start;
     flex-wrap: wrap;
   }
-
-  nav {
-    text-align: left;
-    margin-left: -1rem;
-    font-size: 1rem;
-
-    padding: 1rem 0;
-    margin-top: 1rem;
-  }
 }
+/*------------------------------------*/
+
+/* Navigation */
+/*------------------------------------*/
+.overlay {
+  height: 100%;
+  width: 100%;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  background-color: rgb(0,0,0); /* fallback Farbe */
+  background-color: rgba(0,0,0, 0.9);
+  overflow-x: hidden;
+  transition: 0.5s;
+}
+
+.overlayContent {
+  position: relative;
+  top: 25%;
+  width: 100%;
+  text-align: center;
+  margin-top: 30px;
+}
+
+.overlay a {
+  padding: 8px;
+  text-decoration: none;
+  font-size: 36px;
+  color: #818181;
+  display: block;
+  transition: 0.3s;
+}
+
+.overlay a:hover, .overlay a:focus {
+  color: #f1f1f1;
+}
+
+/* verhindert Überlagerung bei zu geringer Höhe */
+@media screen and (max-height: 450px) {
+  .overlay a {font-size: 20px}
+}
+/*------------------------------------*/
+
+/* Hamburger */
+/*------------------------------------*/
+.hamburger {
+  position: absolute;
+  top: 20px;
+  right: 45px;
+  z-index: 2;
+  display: inline-block;
+  cursor: pointer;
+}
+
+.bar1, .bar2, .bar3 {
+  width: 35px;
+  height: 5px;
+  background-color: #333;
+  margin: 6px 0;
+  transition: 0.4s;
+}
+
+.opened .bar1 {
+  transform: translate(0, 11px) rotate(-45deg);
+}
+
+.opened .bar2 {opacity: 0;}
+
+.opened .bar3 {
+  transform: translate(0, -11px) rotate(45deg);
+}
+
+.opened .bar1, .opened .bar3 {
+  background-color: #818181;
+}
+/*------------------------------------*/
 </style>
