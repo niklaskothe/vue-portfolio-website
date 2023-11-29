@@ -5,6 +5,7 @@ import { ref } from 'vue'
 
 const height = ref('0%')
 const isOpened = ref(false)
+const darkMode = ref(true)
 
 function toggleHamburger() {
   isOpened.value = !isOpened.value
@@ -15,6 +16,31 @@ function toggleNav() {
   height.value = height.value === '0%' ? '100%' : '0%'
 }
 
+function toggleDarkMode() {
+    darkMode.value = !darkMode.value;
+    
+    // Logik, um die CSS-Variablen für den Tag-/Nachtmodus zu ändern
+    if (darkMode.value) {
+      document.documentElement.style.setProperty('--color-background', 'var(--vt-c-black)');
+      document.documentElement.style.setProperty('--color-background-soft', 'var(--vt-c-black-soft);');
+      document.documentElement.style.setProperty('--color-background-mute', 'var(--vt-c-black-mute)');
+      document.documentElement.style.setProperty('--color-border', 'var(--vt-c-divider-dark-2)');
+      document.documentElement.style.setProperty('--color-border-hover', 'var(--vt-c-divider-dark-1)');
+      document.documentElement.style.setProperty('--color-heading', 'var(--vt-c-text-dark-1)');
+      document.documentElement.style.setProperty('--color-text', 'var(--vt-c-text-dark-2)'); 
+
+
+    } else {
+      document.documentElement.style.setProperty('--color-background', 'var(--vt-c-white)');
+      document.documentElement.style.setProperty('--color-background-soft', 'var(--vt-c-white-soft);');
+      document.documentElement.style.setProperty('--color-background-mute', 'var(--vt-c-white-mute)');
+      document.documentElement.style.setProperty('--color-border', 'var(--vt-c-divider-light-2)');
+      document.documentElement.style.setProperty('--color-border-hover', 'var(--vt-c-divider-light-1)');
+      document.documentElement.style.setProperty('--color-heading', 'var(--vt-c-text-light-1)');
+      document.documentElement.style.setProperty('--color-text', 'var(--vt-c-text-light-2)'); 
+
+    }
+}
 
 </script>
 
@@ -23,24 +49,37 @@ function toggleNav() {
     <img alt="Vue logo" class="logo" src="@/assets/logo.svg" width="125" height="125" />
     <HelloWorld msg="You did it!" />
 
-    <div id="myNav" class="overlay" v-bind:style="{ height }">
-      <nav class="overlayContent">
-        <RouterLink @click="toggleNav" to="/">Home</RouterLink>
-        <RouterLink @click="toggleNav" to="/about">About</RouterLink>
-        <RouterLink @click="toggleNav" to="/komponenten">Komponenten</RouterLink>
-      </nav>
-    </div>
+      <div class="dark-mode-container">
+        <button @click="toggleDarkMode" class="dark-mode-toggle" :class="{ 'light-mode': lightMode, 'dark-mode': !lightMode }">
+          {{ darkMode ? 'Light Mode' : 'Dark Mode' }}
+        </button>
+      </div>
 
-    <div class="hamburger" :class="{opened: isOpened}" @click="toggleNav">
-      <div class="bar1"></div>
-      <div class="bar2"></div>
-      <div class="bar3"></div>
-    </div>
+      <div id="myNav" class="overlay" v-bind:style="{ height }">
+        <nav class="overlayContent">
+          <RouterLink @click="toggleNav" to="/">Home</RouterLink>
+          <RouterLink @click="toggleNav" to="/about">About</RouterLink>
+          <RouterLink @click="toggleNav" to="/komponenten">Komponenten</RouterLink>
+        </nav>
+      </div>
+
+      <div class="hamburger" :class="{opened: isOpened}" @click="toggleNav">
+        <div class="bar1"></div>
+        <div class="bar2"></div>
+        <div class="bar3"></div>
+      </div> 
+    
+   
+
+    
   </header>
 
-    <RouterView />
+  <RouterView />
 
 </template>
+
+
+
 
 <style scoped>
 /* Default Styles */
@@ -114,6 +153,8 @@ header {
 @media screen and (max-height: 450px) {
   .overlay a {font-size: 20px}
 }
+
+
 /*------------------------------------*/
 
 /* Hamburger */
@@ -149,4 +190,32 @@ header {
   background-color: #818181;
 }
 /*------------------------------------*/
+
+/* Tag-/Nachtmodus-Schalter */
+.dark-mode-container {
+  position: absolute;
+  top: 22px;
+  right: 100px;
+  z-index: 2;
+  display: inline-block;
+  cursor: pointer;
+}
+
+.dark-mode-toggle {
+  background-color: var(--color-background); 
+  color: var(--color-heading); 
+  border: 1px solid var(--color-border); 
+  padding: 8px 16px;
+  cursor: pointer;
+  transition: background-color 0.3s, color 0.3s, border-color 0.3s;
+}
+
+.dark-mode-toggle:hover {
+  background-color: var(--color-background-soft); 
+  color: var(--color-text);
+  border-color: var(--color-border-hover); 
+}
+
+
+
 </style>
