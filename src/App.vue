@@ -22,6 +22,7 @@ function toggleHamburger() {
 function toggleNav() {
   toggleHamburger()
   height.value = height.value === '0%' ? '100%' : '0%'
+  document.body.style.overflow = document.body.style.overflow === 'hidden' ? 'auto' : 'hidden'
 }
 
 function toggleDarkMode() {
@@ -140,7 +141,6 @@ header {
 /* Navbar */
 .navBar {
   width: 100%;
-  position: sticky;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -158,7 +158,7 @@ header {
   top: 0;
   background-color: rgb(0,0,0); /* fallback Farbe */
   background-color: rgba(0,0,0, 0.9);
-  overflow-x: hidden;
+  overflow: hidden;
   transition: 0.5s;
 }
 
@@ -207,7 +207,7 @@ header {
 .bar1, .bar2, .bar3 {
   width: 35px;
   height: 5px;
-  background-color: #333;
+  background-color: var(--color-text);
   margin: 6px 0;
   transition: 0.4s;
 }
@@ -229,7 +229,7 @@ header {
 
 /* Tag-/Nachtmodus-Schalter */
 .dark-mode-container {
-  position: absolute;
+  position: fixed;
   top: 22px;
   right: 0px;
   z-index: 2;
