@@ -1,6 +1,5 @@
 <script setup>
 import { RouterLink, RouterView } from 'vue-router'
-import HelloWorld from './components/HelloWorld.vue'
 import { ref } from 'vue'
 
 const height = ref('0%')
@@ -55,15 +54,16 @@ function toggleDarkMode() {
 
 <template>
   <header>
-    <img alt="Vue logo" class="logo" src="@/assets/logo.svg" width="125" height="125" />
-    <HelloWorld msg="You did it!" />
+    <div class="navBar">
+      <img alt="Vue logo" class="logo" src="@/assets/logo.svg" width="48" height="48"/>
 
-      <div class="dark-mode-container">
-        <button @click="toggleDarkMode" class="dark-mode-toggle" :class="{ 'light-mode': lightMode, 'dark-mode': !lightMode }">
-          {{ darkMode ? 'Light Mode' : 'Dark Mode' }}
-        </button>
+      <h1>Portfolio</h1>
+
+      <div class="hamburger" :class="{opened: isOpened}" @click="toggleNav">
+        <div class="bar1"></div>
+        <div class="bar2"></div>
+        <div class="bar3"></div>
       </div>
-
       <div id="myNav" class="overlay" v-bind:style="{ height }">
         <nav class="overlayContent">
           <RouterLink @click="toggleNav" to="/">Home</RouterLink>
@@ -71,16 +71,15 @@ function toggleDarkMode() {
           <RouterLink @click="toggleNav" to="/komponenten">Komponenten</RouterLink>
         </nav>
       </div>
-
-      <div class="hamburger" :class="{opened: isOpened}" @click="toggleNav">
-        <div class="bar1"></div>
-        <div class="bar2"></div>
-        <div class="bar3"></div>
-      </div> 
+    </div>
     
-   
+     
 
-    
+    <div class="dark-mode-container">
+      <button @click="toggleDarkMode" class="dark-mode-toggle" :class="{ 'light-mode': lightMode, 'dark-mode': !lightMode }">
+        {{ darkMode ? 'Light Mode' : 'Dark Mode' }}
+      </button>
+    </div>
   </header>
 
   <RouterView />
@@ -107,11 +106,27 @@ header {
   header {
     display: flex;
     place-items: center;
-    padding-right: calc(var(--section-gap) / 2);
   }
 
   .logo {
-    margin: 0 2rem 0 0;
+    margin: 0;
+  }
+
+  header .wrapper {
+    display: flex;
+    place-items: flex-start;
+    flex-wrap: wrap;
+  }
+}
+
+@media (max-width: 1024px) {
+  header {
+    display: flex;
+    place-items: center;
+  }
+
+  .logo {
+    margin: 0;
   }
 
   header .wrapper {
@@ -122,7 +137,17 @@ header {
 }
 /*------------------------------------*/
 
-/* Navigation */
+/* Navbar */
+.navBar {
+  width: 100%;
+  position: sticky;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+
+/* Hamburger Overlay */
 /*------------------------------------*/
 .overlay {
   height: 100%;
@@ -169,9 +194,11 @@ header {
 /* Hamburger */
 /*------------------------------------*/
 .hamburger {
+  /*
   position: absolute;
   top: 20px;
   right: 45px;
+  */
   z-index: 2;
   display: inline-block;
   cursor: pointer;
@@ -204,7 +231,7 @@ header {
 .dark-mode-container {
   position: absolute;
   top: 22px;
-  right: 100px;
+  right: 0px;
   z-index: 2;
   display: inline-block;
   cursor: pointer;
