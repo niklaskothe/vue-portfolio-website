@@ -7,6 +7,15 @@ const height = ref('0%')
 const isOpened = ref(false)
 const darkMode = ref(true)
 
+function getTheme() {
+  if(window.matchMedia && window.matchMedia("(prefers-color-scheme:dark)").matches) {
+    darkMode.value = true
+  } else {
+    darkMode.value = false
+  }
+}
+getTheme();
+
 function toggleHamburger() {
   isOpened.value = !isOpened.value
 }
