@@ -3,7 +3,7 @@ import { RouterLink, RouterView } from 'vue-router'
 import { ref } from 'vue'
 import DarkMode from './components/DarkMode.vue'
 import HamburgerMenu from './components/HamburgerMenu.vue';
-
+import ProgressBar from './components/ProgressBar.vue';
 </script>
 
 <template>
@@ -16,11 +16,12 @@ import HamburgerMenu from './components/HamburgerMenu.vue';
       <HamburgerMenu/>
     </div>
     
-     
-
-    <DarkMode/>
+    <div class="break"></div>
+ 
+    <ProgressBar/>
   </header>
-
+ 
+  <DarkMode/>
   <RouterView />
 
 </template>
@@ -34,6 +35,14 @@ import HamburgerMenu from './components/HamburgerMenu.vue';
 header {
   line-height: 1.5;
   max-height: 100vh;
+
+  position: sticky;
+  top: 0;
+  background: var(--color-background);
+  padding: 8px;
+  transition: background-color 0.5s, color 0.3s;
+
+  flex-wrap: wrap;
 }
 
 .logo {
@@ -82,6 +91,11 @@ header {
   display: flex;
   justify-content: space-between;
   align-items: center;
+}
+
+.break {
+  flex-basis: 100%;
+  height: 0;
 }
 
 </style>

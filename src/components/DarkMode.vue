@@ -103,6 +103,7 @@ function toggleDarkMode() {
     color: var(--color-heading);
     border: 1px solid var(--color-border);
     border-radius: 50%;
+    transition: background-color 0.3s, color 0.3s, border-color 0.3s;
 }
 
 
