@@ -51,14 +51,13 @@ function toggleDarkMode() {
     </div>
     -->
 
-    <div class="iconContainer" @click="toggleDarkMode">
-        <button v-if="darkMode" class="iconButton">
-            <IconSun/>
-        </button>
-        <button v-else class="iconButton">
-            <IconMoon/>
-        </button>
-    </div>
+
+    <button v-if="darkMode" @click="toggleDarkMode" class="iconButton">
+        <IconSun />
+    </button>
+    <button v-else @click="toggleDarkMode" class="iconButton">
+        <IconMoon />
+    </button>
 </template>
 
 <style>
@@ -87,13 +86,6 @@ function toggleDarkMode() {
     border-color: var(--color-border-hover);
 }
 
-.iconContainer {
-    width: fit-content;
-    position: fixed;
-    bottom: 10%;
-    right: 5%;
-}
-
 .iconButton {
     display: flex;
     align-items: center;
@@ -105,6 +97,5 @@ function toggleDarkMode() {
     border-radius: 50%;
     transition: background-color 0.3s, color 0.3s, border-color 0.3s;
 }
-
 
 </style>

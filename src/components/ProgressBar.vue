@@ -22,6 +22,7 @@ function myFunction() {
     width: 100%;
     height: 8px;
     background: var(--color-background-mute);
+    transition: background-color 0.3s;
 }
 
 .progressBar {

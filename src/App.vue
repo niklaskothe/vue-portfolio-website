@@ -1,7 +1,7 @@
 <script setup>
 import { RouterLink, RouterView } from 'vue-router'
 import { ref } from 'vue'
-import DarkMode from './components/DarkMode.vue'
+import IconBar from './components/IconBar.vue';
 import HamburgerMenu from './components/HamburgerMenu.vue';
 import ProgressBar from './components/ProgressBar.vue';
 </script>
@@ -21,7 +21,7 @@ import ProgressBar from './components/ProgressBar.vue';
     <ProgressBar/>
   </header>
  
-  <DarkMode/>
+  <IconBar/>
   <RouterView />
 
 </template>
