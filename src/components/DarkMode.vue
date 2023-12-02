@@ -1,5 +1,7 @@
 <script setup>
 import { ref } from 'vue'
+import IconSun from './icons/IconSun.vue';
+import IconMoon from './icons/IconMoon.vue';
 
 const darkMode = ref(true)
 
@@ -40,10 +42,21 @@ function toggleDarkMode() {
 </script>
 
 <template>
+    <!--
     <div class="dark-mode-container">
         <button @click="toggleDarkMode" class="dark-mode-toggle"
             :class="{ 'light-mode': !darkMode, 'dark-mode': darkMode }">
             {{ darkMode ? 'Light Mode' : 'Dark Mode' }}
+        </button>
+    </div>
+    -->
+
+    <div class="iconContainer" @click="toggleDarkMode">
+        <button v-if="darkMode" class="iconButton">
+            <IconSun/>
+        </button>
+        <button v-else class="iconButton">
+            <IconMoon/>
         </button>
     </div>
 </template>
@@ -73,4 +86,24 @@ function toggleDarkMode() {
     color: var(--color-text);
     border-color: var(--color-border-hover);
 }
+
+.iconContainer {
+    width: fit-content;
+    position: fixed;
+    bottom: 10%;
+    right: 5%;
+}
+
+.iconButton {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 4px;
+    background-color: var(--color-background);
+    color: var(--color-heading);
+    border: 1px solid var(--color-border);
+    border-radius: 50%;
+}
+
+
 </style>
