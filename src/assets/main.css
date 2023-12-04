@@ -8,6 +8,10 @@
   font-weight: normal;
 }
 
+h2 {
+  margin-bottom: 0.5rem;
+}
+
 a,
 .green {
   text-decoration: none;

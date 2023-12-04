@@ -27,18 +27,15 @@
       <h2>Kontaktformular</h2>
       <form @submit.prevent="submitForm">
         <div class="form-group">
-          <label for="name">Name:</label>
-          <input type="text" id="name" v-model="name" required>
+          <input placeholder="Name" type="text" id="name" v-model="name" required>
         </div>
         <div class="form-group">
-          <label for="email">E-Mail:</label>
-          <input type="email" id="email" v-model="email" required>
+          <input placeholder="E-Mail" type="email" id="email" v-model="email" required>
         </div>
-        <div class="form-group">
-          <label for="message">Nachricht:</label>
-          <textarea id="message" v-model="message" rows="5" required></textarea>
+        <div class="nachricht">
+          <textarea placeholder="Nachricht" id="message" v-model="message" rows="5" required></textarea>
         </div>
-        <div class="form-group">
+        <div class="datenschutz">
           <label>
             <input type="checkbox" v-model="privacyAgreement" required>
             Ich bestätige die Datenschutzerklärung.
@@ -55,8 +52,22 @@
   margin-top: 40px;
 }
 
-.form-group {
+
+
+form {
+  display: grid;
+  grid-template-columns: 50% 50%;
+  grid-gap: 8px;
+  padding-right: 8px;
   margin-bottom: 20px;
+}
+
+input.name, input.email, input  {
+  margin-bottom: 16px;
+}
+
+.nachricht, .datenschutz {
+  grid-column: span 2;
 }
 
 label {
@@ -80,8 +91,8 @@ button {
   font-size: 16px;
   border: none;
   border-radius: 4px;
-  background-color: #007bff;
-  color: #fff;
+  background-color: var( --color-highlight);
+  //color: var(--color-heading);
   cursor: pointer;
 }
 
