@@ -3,6 +3,7 @@
 import TheWelcome from '../components/TheWelcome.vue'
 */
 import ImageGrid from '../components/ImageGrid.vue'
+import Contact from '../components/Contact.vue'
 </script>
 
 <template>
@@ -12,6 +13,7 @@ import ImageGrid from '../components/ImageGrid.vue'
     -->
     <section>
     <ImageGrid />
+    <Contact />
     </section>
   </main>
 </template>

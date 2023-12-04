@@ -17,7 +17,6 @@ getTheme();
 function toggleDarkMode() {
     darkMode.value = !darkMode.value;
 
-    // Logik, um die CSS-Variablen für den Tag-/Nachtmodus zu ändern
     if (darkMode.value) {
         document.documentElement.style.setProperty('--color-background', 'var(--vt-c-black)');
         document.documentElement.style.setProperty('--color-background-soft', 'var(--vt-c-black-soft);');
@@ -80,9 +79,9 @@ function toggleDarkMode() {
     transition: background-color 0.3s, color 0.3s, border-color 0.3s;
 }
 
-.dark-mode-toggle:hover {
-    background-color: var(--color-background-soft);
-    color: var(--color-text);
+.iconButton:hover {
+    background-color: var(--vt-c-white-mute);
+    color: var(--vt-c-black-soft);
     border-color: var(--color-border-hover);
 }
 
