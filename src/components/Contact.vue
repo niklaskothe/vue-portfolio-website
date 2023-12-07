@@ -103,7 +103,7 @@ button {
   border: none;
   border-radius: 4px;
   background-color: var( --color-highlight);
-  //color: var(--color-heading);
+  /*color: var(--color-heading);*/
   cursor: pointer;
 }
 
