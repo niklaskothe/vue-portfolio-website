@@ -6,7 +6,7 @@
                 <button>Nimm Kontakt auf!</button>
             </div>
             <div>
-                <img class="heroImg" src="img/wandern.jpg" alt="Eule">
+                <img class="heroImg" src="../../public/img/wandern.jpg" alt="Wandern">
             </div>
         </div>
 </template>
