@@ -5,6 +5,7 @@ import TheWelcome from '../components/TheWelcome.vue'
 import ImageGrid from '../components/ImageGrid.vue'
 import Contact from '../components/Contact.vue'
 import Hero from '../components/Hero.vue';
+import TeaserCards from '../components/TeaserCards.vue';
 </script>
 
 <template>
@@ -31,8 +32,14 @@ import Hero from '../components/Hero.vue';
           feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril
           delenit augue duis dolore te feugait nulla facilisi. Lorem ipsum dolor sit amet.</p>
     </section>
+
+    <section>
+      <h2>Meine Projekte</h2>
+      <TeaserCards/>
+    </section>
     
     <section>
+      <h2>Galerie</h2>
       <ImageGrid />
     </section>
     

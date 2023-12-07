@@ -34,7 +34,7 @@
 }
 
 .heroText button {
-    max-width: 11rem;
+    max-width: 13rem;
 }
 
 @media (max-width: 1024px) {

@@ -20,5 +20,7 @@ import ToTopButton from './ToTopButton.vue';
     position: fixed;
     bottom: 10%;
     right: 5%;
+
+    z-index: 5;
 }
 </style>

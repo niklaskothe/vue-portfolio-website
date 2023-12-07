@@ -41,6 +41,7 @@ header {
   background: var(--color-background);
   padding: 8px;
   transition: background-color 0.5s, color 0.3s;
+  z-index: 10;
 
   flex-wrap: wrap;
 }
