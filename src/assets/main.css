@@ -49,7 +49,7 @@ div[contenteditable="true"], h2[contenteditable="true"], p[contenteditable="true
 }
 /*div[contenteditable="true"]:focus */
 
-div[contenteditable="true"],h2[contenteditable="true"],p[contenteditable="true"]:empty::before {
+div[contenteditable="true"]:empty::before,h2[contenteditable="true"]:empty::before,p[contenteditable="true"]:empty::before {
   content: "Hier Text eingeben"; 
   color: #ccc; 
 }
