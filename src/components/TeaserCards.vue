@@ -141,5 +141,42 @@
         flex: 100%;
         max-width: 100%;
     }
+
+    .cardBody {
+        transform: translateY(60%);
+        transition: transform 500ms ease;
+    }
+
+    .card .cardBody {
+        transform: translateY(0);
+        transition-delay: 500ms;
+    }
+
+    .cardBody>*:not(.cardTitle) {
+        opacity: 0;
+        transition: opacity 1200ms linear 400ms;
+    }
+
+    .card .cardBody>*:not(.cardTitle) {
+        opacity: 1;
+    }
+
+    .cardTitle::after {
+        content: "";
+        position: absolute;
+        left: -1.5rem;
+        top: 100%;
+        height: 3px;
+        width: calc(100% + 1.5rem);
+        background: var(--color-highlight);
+        transform: scaleX(0);
+        transition: transform 200ms ease;
+        transform-origin: left;
+    }
+
+    .card .cardTitle::after {
+        transition: transform 500ms ease;
+        transform: scaleX(1);
+    }
 }
 </style>
