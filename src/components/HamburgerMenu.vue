@@ -13,7 +13,11 @@ function toggleNav() {
     toggleHamburger()
     height.value = height.value === '0%' ? '100%' : '0%'
     document.body.style.overflow = document.body.style.overflow === 'hidden' ? 'auto' : 'hidden'
+
 }
+
+
+
 </script>
 
 <template>
@@ -23,10 +27,15 @@ function toggleNav() {
         <div class="bar3"></div>
     </div>
     <div id="myNav" class="overlay" v-bind:style="{ height }">
-        <nav class="overlayContent">
-            <RouterLink @click="toggleNav" to="/">Home</RouterLink>
+        <nav id="test" class="overlayContent">
+            <!--<RouterLink @click="toggleNav" to="/">Home</RouterLink>
             <RouterLink @click="toggleNav" to="/about">About</RouterLink>
-            <RouterLink @click="toggleNav" to="/komponenten">Komponenten</RouterLink>
+            <RouterLink @click="toggleNav" to="/komponenten">Komponenten</RouterLink>-->
+            <a @click="toggleNav" href="#section1">Start</a>
+            <a @click="toggleNav" href="#section2" >Über mich</a>
+            <a @click="toggleNav" href="#section3">Meine Projekte</a>
+            <a @click="toggleNav" href="#section4">Galerie</a>
+            <a @click="toggleNav" href="#section5">Kontakt</a>
         </nav>
     </div>
 </template>
@@ -118,5 +127,9 @@ function toggleNav() {
 .opened .bar1,
 .opened .bar3 {
     background-color: #818181;
+}
+
+a {
+    scroll-behavior: smooth;
 }
 </style>

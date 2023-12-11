@@ -13,11 +13,11 @@ import TeaserCards from '../components/TeaserCards.vue';
     <!--
     <TheWelcome />
     -->
-    <section>
+    <section id="section1">
       <Hero />
     </section>
 
-    <section>
+    <section id="section2">
       <h2>Über mich</h2>
         <div contenteditable="true" ref="editableContent">
           <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et
@@ -35,24 +35,29 @@ import TeaserCards from '../components/TeaserCards.vue';
         </div>
     </section>
 
-    <section>
+    <section id="section3">
       <h2>Meine Projekte</h2>
       <TeaserCards/>
     </section>
     
-    <section>
+    <section id="section4">
       <h2>Galerie</h2>
       <ImageGrid />
     </section>
     
-    <section>
+    <section id="section5">
       <Contact />
     </section>
 
   </main>
 </template>
 
-<style>section {
-  margin: 32px 0;
+<style>
+section {
+  padding-top: 80px;
+}
+
+main :first-child {
+  padding-top: 0;
 }
 </style>
