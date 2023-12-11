@@ -6,6 +6,7 @@ import ImageGrid from '../components/ImageGrid.vue'
 import Contact from '../components/Contact.vue'
 import Hero from '../components/Hero.vue';
 import TeaserCards from '../components/TeaserCards.vue';
+import Carousel from '../components/Carousel.vue';
 </script>
 
 <template>
@@ -57,7 +58,7 @@ section {
   padding-top: 80px;
 }
 
-main :first-child {
+#section1 {
   padding-top: 0;
 }
 </style>
