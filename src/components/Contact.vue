@@ -96,7 +96,11 @@ textarea {
     'Helvetica Neue',
     sans-serif;
 }
-
+@media (max-width: 600px) {
+  form {
+      display: block; 
+  }
+}
 button {
   padding: 10px 20px;
   font-size: 16px;
