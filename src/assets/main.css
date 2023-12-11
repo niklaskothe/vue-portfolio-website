@@ -40,6 +40,20 @@ a,
   background: var(--color-background-mute);
 }
 
+div[contenteditable="true"], h2[contenteditable="true"], p[contenteditable="true"] {
+  line-height: 1.5; 
+  max-height: 300px; 
+  overflow-y: auto;
+  cursor: text;  
+  
+}
+/*div[contenteditable="true"]:focus */
+
+div[contenteditable="true"],h2[contenteditable="true"],p[contenteditable="true"]:empty::before {
+  content: "Hier Text eingeben"; 
+  color: #ccc; 
+}
+
 @media (hover: hover) {
   a:hover {
     background-color: hsla(160, 100%, 37%, 0.2);
