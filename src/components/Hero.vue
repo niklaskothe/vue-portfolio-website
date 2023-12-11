@@ -1,3 +1,7 @@
+<script setup>
+import TiltingCard from './TiltingCard.vue';
+</script>
+
 <template>
     <div class="hero">
             <div class="heroText">
@@ -6,7 +10,8 @@
                 <button>Nimm Kontakt auf!</button>
             </div>
             <div>
-                <img class="heroImg" src="../../public/img/wandern.jpg" alt="Wandern">
+                <!-- <img class="heroImg" src="../../public/img/wandern.jpg" alt="Wandern"> -->
+                <TiltingCard/>
             </div>
         </div>
 </template>
@@ -16,8 +21,8 @@
     display: grid;
     grid-template-columns: 50% 50%;
     grid-gap: 8px;
-    margin: 0 8px 0 8px;
-    padding: 0 8px 0 8px;
+    margin: 64px 8px 0 8px;
+    padding: 16px 8px 0 8px;
 }
 
 .heroImg {
