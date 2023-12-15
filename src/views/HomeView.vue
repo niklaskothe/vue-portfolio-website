@@ -6,7 +6,7 @@ import ImageGrid from '../components/ImageGrid.vue'
 import Contact from '../components/Contact.vue'
 import Hero from '../components/Hero.vue';
 import TeaserCards from '../components/TeaserCards.vue';
-import Carousel from '../components/Carousel.vue';
+import Skills from '../components/Skills.vue';
 </script>
 
 <template>
@@ -40,13 +40,18 @@ import Carousel from '../components/Carousel.vue';
       <h2>Meine Projekte</h2>
       <TeaserCards/>
     </section>
-    
+
     <section id="section4">
+      <h2>Meine Skills</h2>
+      <Skills/>
+    </section>
+    
+    <section id="section5">
       <h2>Galerie</h2>
       <ImageGrid />
     </section>
     
-    <section id="section5">
+    <section id="section6">
       <Contact />
     </section>
 

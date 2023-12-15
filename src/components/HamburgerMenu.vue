@@ -34,8 +34,9 @@ function toggleNav() {
             <a @click="toggleNav" href="#section1">Start</a>
             <a @click="toggleNav" href="#section2" >Über mich</a>
             <a @click="toggleNav" href="#section3">Meine Projekte</a>
-            <a @click="toggleNav" href="#section4">Galerie</a>
-            <a @click="toggleNav" href="#section5">Kontakt</a>
+            <a @click="toggleNav" href="#section4">Meine Skills</a>
+            <a @click="toggleNav" href="#section5">Galerie</a>
+            <a @click="toggleNav" href="#section6">Kontakt</a>
         </nav>
     </div>
 </template>
