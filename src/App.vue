@@ -4,6 +4,7 @@ import { ref } from 'vue'
 import IconBar from './components/IconBar.vue';
 import HamburgerMenu from './components/HamburgerMenu.vue';
 import ProgressBar from './components/ProgressBar.vue';
+import Footer from './components/Footer.vue';
 </script>
 
 <template>
@@ -24,6 +25,7 @@ import ProgressBar from './components/ProgressBar.vue';
   <IconBar/>
   <RouterView />
 
+  <Footer />
 </template>
 
 
