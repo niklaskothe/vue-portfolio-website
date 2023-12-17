@@ -52,20 +52,20 @@
     data() {
       return {
         images: [
-          { src: "../../public/img/arbeit.jpg" },
-          { src: "../../public/img/baum.jpg" },
-          { src: "../../public/img/strasse.jpg" },
-          { src: "../../public/img/eishoehle.jpg" },
-          { src: "../../public/img/fastfood.jpg" },
-          { src: "../../public/img/eule.jpg" },
-          { src: "../../public/img/lightroom.jpg" },
-          { src: "../../public/img/leuchtreklame.jpg" },
-          { src: "../../public/img/kamera.jpg" },
-          { src: "../../public/img/schachbrett.jpg" },
-          { src: "../../public/img/pinsel.jpg" },
-          { src: "../../public/img/mischpult.jpg" },
-          { src: "../../public/img/drohne.jpg" },
-          { src: "../../public/img/glasfaser.jpg" },
+          { src: "/img/arbeit.jpg" },
+          { src: "/img/baum.jpg" },
+          { src: "/img/strasse.jpg" },
+          { src: "/img/eishoehle.jpg" },
+          { src: "/img/fastfood.jpg" },
+          { src: "/img/eule.jpg" },
+          { src: "/img/lightroom.jpg" },
+          { src: "/img/leuchtreklame.jpg" },
+          { src: "/img/kamera.jpg" },
+          { src: "/img/schachbrett.jpg" },
+          { src: "/img/pinsel.jpg" },
+          { src: "/img/mischpult.jpg" },
+          { src: "/img/drohne.jpg" },
+          { src: "/img/glasfaser.jpg" }
         ],
         isHovered: null
       };
