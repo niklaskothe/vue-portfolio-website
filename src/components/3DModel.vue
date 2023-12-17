@@ -6,7 +6,7 @@
       <DirectionalLight
         :position="{ x: 0, y: 200, z: 100 }"
       />
-      <GltfModel src="/../../../public/model/Tree1.glb" />
+      <GltfModel src="/../../../model/Tree1.glb" />
     </Scene>
   </Renderer>
 </template>
