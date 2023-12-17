@@ -1,4 +1,4 @@
-<template>
+<!--<template>
     <div class="row">
         <div class="column">
             <img src="../../public/img/arbeit.jpg">
@@ -23,9 +23,81 @@
             <img src="../../public/img/glasfaser.jpg">
         </div>
     </div>
-</template>
+</template>  -->
+
+<template>
+    <div class="row">
+        <div v-for="(image, index) in images" :key="index" class="column">
+            <div class="image-container"
+                @mouseover="highlightImage(index)"
+                
+            >
+                <img :src="image.src" :alt="'Image ' + (index + 1)" />
+                <div v-if="isHovered === index" class="overlay">
+                    <span @click="deleteImage(index)" class="delete-icon">X</span>
+                </div>
+            </div>
+        </div>
+      <div class="column">
+        <input type="file" id="fileInput" @change="addNewImage" style="display: none;" />
+        <label for="fileInput" class="custom-file-upload">
+            <span style="font-weight: bold;">(+)HINZUFÜGEN</span>
+        </label>
+      </div>
+    </div>
+  </template>
+  
+  <script>
+  export default {
+    data() {
+      return {
+        images: [
+          { src: "../../public/img/arbeit.jpg" },
+          { src: "../../public/img/baum.jpg" },
+          { src: "../../public/img/strasse.jpg" },
+          { src: "../../public/img/eishoehle.jpg" },
+          { src: "../../public/img/fastfood.jpg" },
+          { src: "../../public/img/eule.jpg" },
+          { src: "../../public/img/lightroom.jpg" },
+          { src: "../../public/img/leuchtreklame.jpg" },
+          { src: "../../public/img/kamera.jpg" },
+          { src: "../../public/img/schachbrett.jpg" },
+          { src: "../../public/img/pinsel.jpg" },
+          { src: "../../public/img/mischpult.jpg" },
+          { src: "../../public/img/drohne.jpg" },
+          { src: "../../public/img/glasfaser.jpg" },
+        ],
+        isHovered: null
+      };
+    },
+    methods: {
+      highlightImage(index) {
+        this.isHovered = index;
+      },
+      deleteImage(index) {
+        this.images.splice(index, 1);
+        this.isHovered = null;
+      },
+      addNewImage(event) {
+        const fileList = event.target.files;
+        if (fileList.length === 0) return;
+
+        const fileReader = new FileReader();
+        fileReader.onload = () => {
+            const imageURL = fileReader.result;
+            this.images.push({ src: imageURL });
+        };
+        fileReader.readAsDataURL(fileList[0]);
+      },
+    }
+  };
+  </script>
+
   
 <style>
+
+
+
 .row {
     display: flex;
     flex-wrap: wrap;
@@ -35,7 +107,7 @@
 /* Create four equal columns that sits next to each other */
 .column {
     flex: 25%;
-    max-width: 25%;
+    max-width: 25%; 
     padding: 0 4px;
 }
 
@@ -43,6 +115,58 @@
     margin-top: 8px;
     vertical-align: middle;
     width: 100%;
+}
+
+
+.image-container {
+  position: relative;
+  margin-top: 8px;
+  width: 100%;
+  overflow: hidden;
+}
+
+.overlay {
+  position: absolute;
+  top: 7px;
+  left: 0;
+  width: 100%;
+  height: 100%; 
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.image-container:hover .overlay {
+  opacity: 1;
+}
+
+.delete-icon {
+  color: white;
+  font-size: 24px;
+  cursor: pointer;
+  /*hier unten drunter weglassen, für "x" in der Mitte*/
+  position: absolute;
+  top: 5px; 
+  right: 15px;
+}
+
+.custom-file-upload {
+  display: inline-block;
+  padding: 12px 20px;
+  font-size: 16px;
+  color: black;
+  background-color: #00916E;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  margin-top: 16px; 
+}
+
+.custom-file-upload:hover {
+  background-color: #00916fa5;
 }
 
 /* Responsive layout - makes a two column-layout instead of four columns */
