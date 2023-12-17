@@ -7,6 +7,7 @@ import Contact from '../components/Contact.vue'
 import Hero from '../components/Hero.vue';
 import TeaserCards from '../components/TeaserCards.vue';
 import Skills from '../components/Skills.vue';
+import Model from '../components/3DModel.vue';
 </script>
 
 <template>
@@ -50,8 +51,13 @@ import Skills from '../components/Skills.vue';
       <h2>Galerie</h2>
       <ImageGrid />
     </section>
-    
+
     <section id="section6">
+      <h2>3D-Model</h2>
+      <Model />
+    </section>
+    
+    <section id="section7">
       <Contact />
     </section>
 
