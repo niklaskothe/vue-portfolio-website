@@ -1,6 +1,10 @@
 # vue-portfolio-website
 
-This template should help get you started developing with Vue 3 in Vite.
+## Projektbeschreibung
+Mit der Portfolio-Website hat man die Möglichkeit sich selbst und die eigenen Projekte darzustellen
+
+Die Seite ist in mehrere Bereiche gegliedert, welche über die Seitennavigation direkt erreichbar sind. 
+Verschiedene Elemente ermöglichen die Präsentation von Bildern, Skills und Text. Teaser-Karten können auf externe Projektseiten verlinken und es gibt die Möglichkeit per E-Mail Kontakt zum Besitzer der Website aufzunehmen.
 
 ## Recommended IDE Setup
 
