@@ -7,7 +7,7 @@ import TiltingCard from './TiltingCard.vue';
             <div class="heroText">
                 <h2 contenteditable="true">Hi, mein Name ist Lorem Ipsum.</h2>
                 <p contenteditable="true">Ich erstelle Sachen</p>
-                <button>Nimm Kontakt auf!</button>
+                <button onclick="window.location.href='#section6';">Nimm Kontakt auf!</button>
             </div>
             <div>
                 <!-- <img class="heroImg" src="../../public/img/wandern.jpg" alt="Wandern"> -->

@@ -37,7 +37,7 @@ function toggleSkillCreator() {
         <div class="CreatorBar2"></div>
     </div>
 
-    <div class="skillAnlegen" :class="{ newSkill: createSkill }" @click="toggleNav">
+    <div class="skillAnlegen" :class="{ newSkill: createSkill }">
         <h3 style="margin: 32px 0 8px 0;">Neuen Skill anlegen:</h3>
         <div class="skillContainer">
             <div class="skill" :style="{ 'width': sliderValue + '%' }">

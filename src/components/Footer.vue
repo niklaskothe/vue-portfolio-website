@@ -1,8 +1,17 @@
+<script setup>
+function toTop() {
+    window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+    });
+}
+</script>
+
 <template>
     <div class="footer">
-        <RouterLink to="/">Home</RouterLink>
-        <RouterLink to="/about">About</RouterLink>
-        <RouterLink to="/komponenten">Komponenten</RouterLink>
+        <RouterLink @click="toTop" to="/">Home</RouterLink>
+        <RouterLink @click="toTop" to="/impressum">Impressum</RouterLink>
+        <RouterLink @click="toTop" to="/datenschutz">Datenschutz</RouterLink>
     </div>
     
 </template>
