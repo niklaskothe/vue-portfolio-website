@@ -100,6 +100,9 @@ textarea {
   form {
       display: block; 
   }
+  .datenschutz {
+    font-size: 12px;
+  }
 }
 button {
   padding: 10px 20px;

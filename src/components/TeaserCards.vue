@@ -1,28 +1,28 @@
 <template>
     <div class="cardContainer">
         <div id="card1" class="card">
-            <div class="cardBody">
+            <div class="cardBody" contenteditable="true" ref="editableContent">
                 <h2 class="cardTitle">Etwas tolles</h2>
                 <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Fuga placeat odio pariatur doloribus sint?</p>
                 <a href="#" class="button">Mehr erfahren</a>
             </div>
         </div>
         <div id="card2" class="card">
-            <div class="cardBody">
+            <div class="cardBody" contenteditable="true" ref="editableContent">
                 <h2 class="cardTitle">Etwas spannendes</h2>
                 <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Fuga placeat odio pariatur doloribus sint?</p>
                 <a href="#" class="button">Mehr erfahren</a>
             </div>
         </div>
         <div id="card3" class="card">
-            <div class="cardBody">
+            <div class="cardBody" contenteditable="true" ref="editableContent">
                 <h2 class="cardTitle">Etwas interessantes</h2>
                 <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Fuga placeat odio pariatur doloribus sint?</p>
                 <a href="#" class="button">Mehr erfahren</a>
             </div>
         </div>
         <div id="card4" class="card">
-            <div class="cardBody">
+            <div class="cardBody" contenteditable="true" ref="editableContent">
                 <h2 class="cardTitle">Etwas lustiges</h2>
                 <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Fuga placeat odio pariatur doloribus sint?</p>
                 <a href="#" class="button">Mehr erfahren</a>
