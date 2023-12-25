@@ -1,23 +1,3 @@
-<template>
-  <div class="column">
-    <div v-for="(group, groupIndex) in imageGroups" :key="groupIndex" class="row">
-      <div v-for="(image, index) in group" :key="image.id" class="image-container" @mouseover="highlightImage(image.id)">
-        <img :src="image.src" :alt="image.alt" />
-        <div v-if="isHovered === image.id" class="overlay">
-          <span @click="deleteImage(image.id)" class="delete-icon">X</span>
-        </div>
-      </div>
-    </div>
-    <div class="row">
-      <input type="file" id="fileInput" @change="addNewImage" style="display: none;" />
-      <label for="fileInput" class="custom-file-upload">
-        <span style="font-weight: bold;">(+)HINZUFÜGEN</span>
-      </label>
-    </div>
-  </div>
-</template>
-
-
 <script>
   export default {
     data() {
@@ -97,6 +77,26 @@
     }
   };
 </script>
+
+<template>
+  <div class="column">
+    <div v-for="(group, groupIndex) in imageGroups" :key="groupIndex" class="row">
+      <div v-for="(image, index) in group" :key="image.id" class="image-container" @mouseover="highlightImage(image.id)">
+        <img :src="image.src" :alt="image.alt" />
+        <div v-if="isHovered === image.id" class="overlay">
+          <span @click="deleteImage(image.id)" class="delete-icon">X</span>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <input type="file" id="fileInput" @change="addNewImage" style="display: none;" />
+      <label for="fileInput" class="custom-file-upload">
+        <span style="font-weight: bold;">(+)HINZUFÜGEN</span>
+      </label>
+    </div>
+  </div>
+</template>
+
 
 <style>
 .column {

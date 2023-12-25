@@ -1,1 +1,0 @@
-import{_ as e,o as t,c as n,a as s}from"./index-0101db5c.js";const c={},_={class:"komponenten"},o=s("h1",null,"Hier werden Daten geschützt",-1),a=[o];function r(d,i){return t(),n("div",_,a)}const h=e(c,[["render",r]]);export{h as default};
