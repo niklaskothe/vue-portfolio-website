@@ -72,6 +72,7 @@ function removeSection(uniqueId) {
       v-for="(section, index) in sections"
       :key="section.uniqueId"
       :class="{'section-container': true, 'first-section': section.uniqueId === 'section1'}"
+      :id="section.uniqueId"
       @mouseenter="toggleHover(section.uniqueId, true)"
       @mouseleave="toggleHover(section.uniqueId, false)"
     >

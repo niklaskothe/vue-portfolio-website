@@ -83,7 +83,7 @@
     <div v-for="(group, groupIndex) in imageGroups" :key="groupIndex" class="row">
       <div v-for="(image, index) in group" :key="image.id" class="image-container" @mouseover="highlightImage(image.id)">
         <img :src="image.src" :alt="image.alt" />
-        <div v-if="isHovered === image.id" class="overlay">
+        <div v-if="isHovered === image.id" class="imgOverlay">
           <span @click="deleteImage(image.id)" class="delete-icon">X</span>
         </div>
       </div>
@@ -125,7 +125,7 @@ vertical-align: middle;
 width: 100%;
 }
 
-.overlay {
+.imgOverlay {
 position: absolute;
 top: 7px;
 left: 0;
@@ -139,7 +139,7 @@ opacity: 0;
 transition: opacity 0.3s ease;
 }
 
-.image-container:hover .overlay {
+.image-container:hover .imgOverlay {
 opacity: 1;
 }
 
