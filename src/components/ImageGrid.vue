@@ -91,7 +91,7 @@
     <div class="row">
       <input type="file" id="fileInput" @change="addNewImage" style="display: none;" />
       <label for="fileInput" class="custom-file-upload">
-        <span style="font-weight: bold;">(+)HINZUFÜGEN</span>
+        <span style="font-weight: bold;">HINZUFÜGEN: (+)</span>
       </label>
     </div>
   </div>
@@ -156,7 +156,7 @@ right: 15px;
 display: inline-block;
 padding: 12px 20px;
 font-size: 16px;
-color: black;
+color: #fff;
 background-color: #00916E;
 border-radius: 5px;
 cursor: pointer;
@@ -165,7 +165,7 @@ margin-top: 16px;
 }
 
 .custom-file-upload:hover {
-background-color: #00916fa5;
+background-color: rgb(0,0,0,0.2);
 }
 
 /* Responsive layout - makes a two column-layout instead of four columns */

@@ -66,38 +66,6 @@ function removeSection(uniqueId) {
 </script>
 
 
-<!--<template>
-  <main>
-     <section
-      v-for="(section, index) in sections"
-      :key="section.uniqueId"
-      :class="{'section-container': true, 'first-section': section.uniqueId === 'section1'}"
-      :id="section.uniqueId"
-      @mouseenter="toggleHover(section.uniqueId, true)"
-      @mouseleave="toggleHover(section.uniqueId, false)"
-    >
-      <h2>{{ section.props.title }}</h2>
-      <component :is="section.component" v-bind="section.props" />
-      <button
-        v-if="section.hovered"
-        class="remove-button"
-        @click="removeSection(section.uniqueId)"
-      >
-        X
-      </button>
-    </section>
-
-    Dropdown-Menü zur Auswahl von Sektionen 
-     <div class="control-container">
-      <select v-model="selectedSection" class="select-section">
-        <option v-for="(section, index) in availableSections" :key="section.id" :value="section.id">
-          {{ section.props.title }}
-        </option>
-      </select>
-      <button @click="addSelectedSection" class="add-section">Füge Komponente hinzu</button>
-    </div>
-  </main>
-</template> -->
 
 <template>
   <main>
@@ -105,6 +73,7 @@ function removeSection(uniqueId) {
       v-for="(section, index) in sections"
       :key="section.uniqueId"
       :class="['section-container', {'first-section': section.uniqueId === 'section1'}]"
+      :id="section.uniqueId"
       @mouseenter="toggleHover(section.uniqueId, true)"
       @mouseleave="toggleHover(section.uniqueId, false)"
     >
@@ -137,36 +106,12 @@ section {
   padding-top: 0;
 }
 
-.section-container:hover {
-  display: block;
-} 
-
-
-.control-container {
-  display: flex;
-  align-items: center;
-  margin-bottom: 20px;
-}
-
-.select-section {
-  margin-right: -8px;
-  margin-top: 8px;
-  font-size: 12px;
-  font-weight: bold;
-  border-radius: 4px;
-  color: #fff;
-  background-color: rgba(0, 145, 110, 1.0);
-  height: 30px;
-  display: inline-flex;
-}
-
 .actions {
   display: block;
   position: absolute;
   top: 64px;
   right: 8px;
 }
-
 
 .actions-inner {
   display: flex;
@@ -175,15 +120,36 @@ section {
   border-radius: 4px; 
 }
 
+.select-section {
+  margin-right: -8px;
+  margin-top: 8px;
+  font-size: 12px;
+  font-weight: bold;
+  border-radius: 4px;
+  border: none;
+  cursor: pointer;
+  color: #fff;
+  background-color: rgba(0, 145, 110, 1.0);
+  transition: background-color 0.3s ease;
+  height: 30px;
+  display: inline-flex;
+}
+
+.select-section:hover, .select-section:focus{
+  background-color: rgba(0, 0, 0, 0.2);
+  outline: none;
+}
+
+
 .add-section,
 .remove-button {
-  font-size: 16px; /* Gemeinsames Styling für die Button-Elemente */
   color: #fff;
   border: none;
   border-radius: 4px;
   cursor: pointer;
   width: 30px;
   height: 30px;
+  background-color: rgba(0, 145, 110, 1.0);
   justify-content: center;
   align-items: center;
   transition: background-color 0.3s ease;
@@ -192,28 +158,16 @@ section {
 
 .add-section {
   font-size: 24px;
-  color: #fff;
-  border: none;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-  display: inline-flex;
-  background-color: rgba(0, 145, 110, 1.0);
-}
-
-.add-section:hover {
-  background-color: rgba(0, 0, 0, 0.2);
 }
 
 .remove-button {
   font-size: 18px;
-  background-color: rgba(0, 145, 110, 1.0);
-  display: inline-flex;
- 
-}
+ }
 
-
-.remove-button:hover {
+.add-section:hover, .remove-button:hover {
   background-color: rgba(0, 0, 0, 0.2);
 }
+
+
 </style>
 
