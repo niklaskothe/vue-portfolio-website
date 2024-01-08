@@ -1,11 +1,13 @@
 <script setup>
 import DarkMode from './DarkMode.vue';
 import ToTopButton from './ToTopButton.vue';
+import ThemePicker from './ThemePicker.vue';
 </script>
 
 <template>
     <div class="iconBar">
         <ToTopButton/>
+        <ThemePicker/>
         <DarkMode/>
     </div>
 </template>

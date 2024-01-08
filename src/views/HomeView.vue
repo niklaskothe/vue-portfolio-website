@@ -129,7 +129,7 @@ section {
   border: none;
   cursor: pointer;
   color: #fff;
-  background-color: rgba(0, 145, 110, 1.0);
+  background-color: var(--color-highlight);
   transition: background-color 0.3s ease;
   height: 30px;
   display: inline-flex;
@@ -149,7 +149,7 @@ section {
   cursor: pointer;
   width: 30px;
   height: 30px;
-  background-color: rgba(0, 145, 110, 1.0);
+  background-color: var(--color-highlight);
   justify-content: center;
   align-items: center;
   transition: background-color 0.3s ease;

@@ -12,6 +12,10 @@ h2 {
   margin-bottom: 0.5rem;
 }
 
+h1 {
+  color: var(--color-highlight);
+}
+
 button{
   margin: 0.5rem 0;
 }
@@ -19,7 +23,7 @@ button{
 a,
 .green {
   text-decoration: none;
-  color: hsla(160, 100%, 37%, 1);
+  color: var(--color-highlight);
   transition: 0.4s;
 }
 
@@ -56,7 +60,7 @@ div[contenteditable="true"]:empty::before,h2[contenteditable="true"]:empty::befo
 
 @media (hover: hover) {
   a:hover {
-    background-color: hsla(160, 100%, 37%, 0.2);
+    background-color: hsla(0, 0%, 33%, 0.2);
   }
 }
 

@@ -157,7 +157,7 @@ display: inline-block;
 padding: 12px 20px;
 font-size: 16px;
 color: #fff;
-background-color: #00916E;
+background-color: var(--color-highlight);
 border-radius: 5px;
 cursor: pointer;
 transition: background-color 0.3s ease;

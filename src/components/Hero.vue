@@ -40,7 +40,7 @@ import TiltingCard from './TiltingCard.vue';
 
 .heroText button {
     color: #fff;
-    background-color: rgba(0, 145, 110, 1.0);
+    background-color: var(--color-highlight);
     max-width: 13rem;
     transition: background-color 0.3s ease;
 }
