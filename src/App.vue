@@ -5,16 +5,34 @@ import IconBar from './components/IconBar.vue';
 import HamburgerMenu from './components/HamburgerMenu.vue';
 import ProgressBar from './components/ProgressBar.vue';
 import Footer from './components/Footer.vue';
+
+
+const { sections } = defineProps(['sections']);
+
+let renderFooterCount = 0;
+
+// Überprüfe die Bedingung für das erste Auftreten
+function shouldRenderFooter() {
+  console.log(renderFooterCount);
+  if (renderFooterCount === 0 || sections) {  
+    renderFooterCount += 1;
+    return false;
+  }
+ 
+  return true;
+}
+
 </script>
 
 <template>
-  <header>
+  <div v-if="shouldRenderFooter()"></div>
+  <header v-if="sections">
     <div class="navBar">
       <img alt="Vue logo" class="logo" src="@/assets/logo.svg" width="48" height="48"/>
 
       <h1>Portfolio</h1>
 
-      <HamburgerMenu/>
+      <HamburgerMenu :sections="sections"/>
     </div>
     
     <div class="break"></div>
@@ -24,8 +42,8 @@ import Footer from './components/Footer.vue';
  
   <IconBar/>
   <RouterView />
-
-  <Footer />
+ 
+  <Footer v-if="shouldRenderFooter()"/>
 </template>
 
 

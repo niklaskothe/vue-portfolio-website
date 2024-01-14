@@ -1,14 +1,15 @@
 <script setup>
 
-import { ref } from 'vue';
-import ImageGrid from '../components/ImageGrid.vue'
-import Contact from '../components/Contact.vue'
+import {ref} from 'vue';
+
+import ImageGrid from '../components/ImageGrid.vue';
+import Contact from '../components/Contact.vue';
 import Hero from '../components/Hero.vue';
 import TeaserCards from '../components/TeaserCards.vue';
 import Skills from '../components/Skills.vue';
 import Model from '../components/3DModel.vue';
 import AboutMe from '../components/AboutMe.vue'; 
-
+import App from '../App.vue';
 
 const sections = ref([
   { uniqueId: 'section1', component: Hero, props: {} },
@@ -17,8 +18,9 @@ const sections = ref([
   { uniqueId: 'section4', component: Skills, props: {title: 'Meine Skills'} },
   { uniqueId: 'section5', component: ImageGrid, props: {title: 'Galerie'} },
   { uniqueId: 'section6', component: Model, props: {title: '3D-Model'} },
-  { uniqueId: 'section7', component: Contact, props: {} },
+  { uniqueId: 'section7', component: Contact, props: {title: 'Kontaktformular'} },
 ]);
+
 
 const availableSections = ref([
   { id: 'section1', component: Hero, props: { title: 'Startbild' } },
@@ -31,6 +33,7 @@ const availableSections = ref([
 ]);
 
 let selectedSection = ref('section1'); // Standardwert im DropDown-Menü
+
 
 function generateUniqueId() {
   return `section_${sections.value.length + 1}`;
@@ -48,7 +51,7 @@ function addSelectedSection(index) {
   const sectionToAdd = availableSections.value.find(section => section.id === selectedSection.value);
   const uniqueId = generateUniqueId();
   if (sectionToAdd) {
-    if (sectionToAdd.id === availableSections.value[0].id || sectionToAdd.id === availableSections.value[availableSections.value.length - 1].id) {
+    if (sectionToAdd.id === availableSections.value[0].id ) {
       sections.value.splice(index + 1, 0, { id: sectionToAdd.id, component: sectionToAdd.component, props: {}, uniqueId });
     } else {
       sections.value.splice(index + 1, 0, { ...sectionToAdd, uniqueId });
@@ -63,11 +66,25 @@ function removeSection(uniqueId) {
   }
 }
 
+function moveSectionUp(index) {
+  if (index > 0) {
+    const removedSection = sections.value.splice(index, 1)[0];
+    sections.value.splice(index - 1, 0, removedSection);
+  }
+}
+
+function moveSectionDown(index) {
+  if (index < sections.value.length - 1) {
+    const removedSection = sections.value.splice(index, 1)[0];
+    sections.value.splice(index + 1, 0, removedSection);
+  }
+}
+
 </script>
 
-
-
 <template>
+  <App :sections="sections" />
+
   <main>
     <section
       v-for="(section, index) in sections"
@@ -80,13 +97,15 @@ function removeSection(uniqueId) {
       <h2>{{ section.props.title }}</h2>
       <component :is="section.component" v-bind="section.props" />
       <div class="actions" v-if="section.hovered">
-        <div class="actions-inner">
+        <div class="actions-inner">          
           <select v-model="selectedSection" class="select-section">
             <option v-for="(section, index) in availableSections" :key="section.id" :value="section.id">
               {{ section.props.title }}
             </option>
           </select>
           <button @click="addSelectedSection(index)" class="add-section">+</button>
+          <button @click="moveSectionUp(index)" class="move-section-up">↑</button>
+          <button @click="moveSectionDown(index)" class="move-section-down">↓</button>
           <button class="remove-button" @click="removeSection(section.uniqueId)">X</button>
         </div>
       </div>
@@ -142,7 +161,9 @@ section {
 
 
 .add-section,
-.remove-button {
+.remove-button,
+.move-section-up, 
+.move-section-down {
   color: #fff;
   border: none;
   border-radius: 4px;
@@ -164,10 +185,14 @@ section {
   font-size: 18px;
  }
 
-.add-section:hover, .remove-button:hover {
-  background-color: rgba(0, 0, 0, 0.2);
+ .move-section-up, 
+.move-section-down  {
+  font-size: 20px;
 }
 
+.add-section:hover, .remove-button:hover, .move-section-up:hover, .move-section-down:hover {
+  background-color: rgba(0, 0, 0, 0.2);
+}
 
 </style>
 

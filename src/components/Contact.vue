@@ -24,7 +24,7 @@
 
 <template>
     <div class="contact-form">
-      <h2>Kontaktformular</h2>
+      <!--<h2>Kontaktformular</h2>-->
       <form @submit.prevent="submitForm">
         <div class="form-group">
           <input placeholder="Name" type="text" id="name" v-model="name" required>

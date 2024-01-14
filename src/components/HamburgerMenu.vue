@@ -1,5 +1,9 @@
 <script setup>
-import { ref } from 'vue'
+
+import {ref} from 'vue';
+
+const { sections } = defineProps(['sections']);
+
 
 const height = ref('0%')
 const isOpened = ref(false)
@@ -7,16 +11,14 @@ const isOpened = ref(false)
 
 function toggleHamburger() {
     isOpened.value = !isOpened.value
+    
 }
 
 function toggleNav() {
     toggleHamburger()
     height.value = height.value === '0%' ? '100%' : '0%'
     document.body.style.overflow = document.body.style.overflow === 'hidden' ? 'auto' : 'hidden'
-
 }
-
-
 
 </script>
 
@@ -26,18 +28,12 @@ function toggleNav() {
         <div class="bar2"></div>
         <div class="bar3"></div>
     </div>
+  
     <div id="myNav" class="overlay" v-bind:style="{ height }">
-        <nav id="test" class="overlayContent">
-            <!--<RouterLink @click="toggleNav" to="/">Home</RouterLink>
-            <RouterLink @click="toggleNav" to="/about">About</RouterLink>
-            <RouterLink @click="toggleNav" to="/komponenten">Komponenten</RouterLink>-->
-            <a @click="toggleNav" href="#section1">Start</a>
-            <a @click="toggleNav" href="#section2" >Über mich</a>
-            <a @click="toggleNav" href="#section3">Meine Projekte</a>
-            <a @click="toggleNav" href="#section4">Meine Skills</a>
-            <a @click="toggleNav" href="#section5">Galerie</a>
-            <a @click="toggleNav" href="#section6">3D-Model</a>
-            <a @click="toggleNav" href="#section7">Kontakt</a>
+        <nav id="test" class="overlayContent" style="max-height: 800px; overflow-y: auto;">
+            <a v-for="section in sections" :key="section.uniqueId" @click="toggleNav" :href="`#${section.uniqueId}`">
+                {{ section.props.title ? section.props.title : 'Start' }}
+            </a>
         </nav>
     </div>
 </template>
@@ -61,7 +57,7 @@ function toggleNav() {
 
 .overlayContent {
     position: relative;
-    top: 25%;
+    top: 20%;
     width: 100%;
     text-align: center;
     margin-top: 30px;
