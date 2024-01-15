@@ -1,28 +1,3 @@
-<template>
-  <div class="object">
-    <Renderer ref="renderer" antialias :orbit-ctrl="{ enableDamping: true }" resize>
-      <Camera :position="{ x: 1, y: 1, z: -2 }" />
-      <Scene ref="scene" background="#f2f2f2">
-        <AmbientLight></AmbientLight>
-        <DirectionalLight :position="{ x: 0, y: 200, z: 100 }" />
-        <GltfModel :key="modelKey" v-if="modelSrc" :src="modelSrc" />
-      </Scene>
-    </Renderer>
-    <div>
-      <!-- Slideshow-Steuerung -->
-      <div class="arrow arrow-left" @click="prevSlide">&#60;</div>
-      <div class="arrow arrow-right" @click="nextSlide">&#62;</div>
-    </div>
-  </div>
-  <div>
-    <!-- Sichtbares benutzerdefiniertes Eingabefeld -->
-    <label class="customFileInput">EIGENES OBJEKT (+)
-      <!-- Verstecktes Standard-Datei-Eingabefeld -->
-      <input type="file" id="fileInput" @change="handleFileChange" accept=".glb" class="fileInput" style="display:none" />
-    </label>
-  </div>
-</template>
-
 <script>
 import {
   AmbientLight,
@@ -100,6 +75,31 @@ export default {
   },
 };
 </script>
+
+<template>
+  <div class="object">
+    <Renderer ref="renderer" antialias :orbit-ctrl="{ enableDamping: true }" resize>
+      <Camera :position="{ x: 1, y: 1, z: -2 }" />
+      <Scene ref="scene" background="#f2f2f2">
+        <AmbientLight></AmbientLight>
+        <DirectionalLight :position="{ x: 0, y: 200, z: 100 }" />
+        <GltfModel :key="modelKey" v-if="modelSrc" :src="modelSrc" />
+      </Scene>
+    </Renderer>
+    <div>
+      <!-- Slideshow-Steuerung -->
+      <div class="arrow arrow-left" @click="prevSlide">&#60;</div>
+      <div class="arrow arrow-right" @click="nextSlide">&#62;</div>
+    </div>
+  </div>
+  <div>
+    <!-- Sichtbares benutzerdefiniertes Eingabefeld -->
+    <label class="customFileInput">EIGENES OBJEKT (+)
+      <!-- Verstecktes Standard-Datei-Eingabefeld -->
+      <input type="file" id="fileInput" @change="handleFileChange" accept=".glb" class="fileInput" style="display:none" />
+    </label>
+  </div>
+</template>
 
 <style>
 .object {

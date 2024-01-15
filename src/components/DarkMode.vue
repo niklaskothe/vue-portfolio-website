@@ -17,6 +17,7 @@ getTheme();
 function toggleDarkMode() {
     darkMode.value = !darkMode.value;
 
+    //verschiedene Farbfestlegungen für Text, Buttons und co.
     if (darkMode.value) {
         document.documentElement.style.setProperty('--color-background', 'var(--vt-c-black)');
         document.documentElement.style.setProperty('--color-background-soft', 'var(--vt-c-black-soft);');
@@ -41,16 +42,6 @@ function toggleDarkMode() {
 </script>
 
 <template>
-    <!--
-    <div class="dark-mode-container">
-        <button @click="toggleDarkMode" class="dark-mode-toggle"
-            :class="{ 'light-mode': !darkMode, 'dark-mode': darkMode }">
-            {{ darkMode ? 'Light Mode' : 'Dark Mode' }}
-        </button>
-    </div>
-    -->
-
-
     <button v-if="darkMode" @click="toggleDarkMode" class="iconButton">
         <IconSun />
     </button>
@@ -96,5 +87,4 @@ function toggleDarkMode() {
     border-radius: 50%;
     transition: background-color 0.3s, color 0.3s, border-color 0.3s;
 }
-
 </style>

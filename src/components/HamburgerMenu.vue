@@ -11,10 +11,10 @@ const isOpened = ref(false)
 
 function toggleHamburger() {
     isOpened.value = !isOpened.value
-    
 }
 
 function toggleNav() {
+    //Steuerung des HamburgerButtons und Menues
     toggleHamburger()
     height.value = height.value === '0%' ? '100%' : '0%'
     document.body.style.overflow = document.body.style.overflow === 'hidden' ? 'auto' : 'hidden'
@@ -29,6 +29,7 @@ function toggleNav() {
         <div class="bar3"></div>
     </div>
   
+    <!--alle vorhandenen Sektionen durchgehen (dynamisch) und ausgeben-->
     <div id="myNav" class="overlay" v-bind:style="{ height }">
         <nav id="test" class="overlayContent" style="max-height: 800px; overflow-y: auto;">
             <a v-for="section in sections" :key="section.uniqueId" @click="toggleNav" :href="`#${section.uniqueId}`">

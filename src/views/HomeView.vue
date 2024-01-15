@@ -11,6 +11,7 @@ import Model from '../components/3DModel.vue';
 import AboutMe from '../components/AboutMe.vue'; 
 import App from '../App.vue';
 
+//Referenz für die Startsektionsdaten
 const sections = ref([
   { uniqueId: 'section1', component: Hero, props: {} },
   { uniqueId: 'section2', component: AboutMe, props: {title: 'Über mich'} },
@@ -22,6 +23,7 @@ const sections = ref([
 ]);
 
 
+//Referenz für alle verfügbaren Sektionsdaten (bei Löschen, Hinzufügen relevant)
 const availableSections = ref([
   { id: 'section1', component: Hero, props: { title: 'Startbild' } },
   { id: 'section2', component: AboutMe, props: { title: 'Über mich' } },
@@ -34,11 +36,12 @@ const availableSections = ref([
 
 let selectedSection = ref('section1'); // Standardwert im DropDown-Menü
 
-
+// Funktion zum Generieren einer eindeutigen ID für eine Sektion
 function generateUniqueId() {
   return `section_${sections.value.length + 1}`;
 }
 
+// Funktion zum Umschalten des Hover-Zustands einer Sektion
 function toggleHover(id, isHovered) {
   const section = sections.value.find(section => section.uniqueId === id);
   if (section) {
@@ -46,11 +49,13 @@ function toggleHover(id, isHovered) {
   }
 }
 
+// Funktion zum Hinzufügen einer ausgewählten Sektion
 function addSelectedSection(index) {
   index = index -1; //möchte neue Komponente oben drüber platzieren
   const sectionToAdd = availableSections.value.find(section => section.id === selectedSection.value);
   const uniqueId = generateUniqueId();
   if (sectionToAdd) {
+    //Unterscheidung hier wegen "titelloser" Sektion(en)
     if (sectionToAdd.id === availableSections.value[0].id ) {
       sections.value.splice(index + 1, 0, { id: sectionToAdd.id, component: sectionToAdd.component, props: {}, uniqueId });
     } else {
@@ -59,6 +64,7 @@ function addSelectedSection(index) {
   }
 }
 
+// Funktion zum Entfernen einer Sektion
 function removeSection(uniqueId) {
   const index = sections.value.findIndex(section => section.uniqueId === uniqueId);
   if (index !== -1) {
@@ -66,6 +72,7 @@ function removeSection(uniqueId) {
   }
 }
 
+// Funktion zum Verschieben einer Sektion nach oben
 function moveSectionUp(index) {
   if (index > 0) {
     const removedSection = sections.value.splice(index, 1)[0];
@@ -73,6 +80,7 @@ function moveSectionUp(index) {
   }
 }
 
+// Funktion zum Verschieben einer Sektion nach unten
 function moveSectionDown(index) {
   if (index < sections.value.length - 1) {
     const removedSection = sections.value.splice(index, 1)[0];
@@ -86,6 +94,7 @@ function moveSectionDown(index) {
   <App :sections="sections" />
 
   <main>
+    <!--Sektionen ausgeben / anzeigen-->
     <section
       v-for="(section, index) in sections"
       :key="section.uniqueId"
@@ -96,13 +105,16 @@ function moveSectionDown(index) {
     >
       <h2>{{ section.props.title }}</h2>
       <component :is="section.component" v-bind="section.props" />
+      <!--beim Hovern über Sektionen zeige folgende BO an-->
       <div class="actions" v-if="section.hovered">
-        <div class="actions-inner">          
+        <div class="actions-inner">
+          <!--DropDown-Menü mit Selektionsmöglichkeiten-->          
           <select v-model="selectedSection" class="select-section">
             <option v-for="(section, index) in availableSections" :key="section.id" :value="section.id">
               {{ section.props.title }}
             </option>
           </select>
+          <!--4 verschiedene Buttons zum Hinzufügen, Verschieben und Löschen der Sektionen-->
           <button @click="addSelectedSection(index)" class="add-section">+</button>
           <button @click="moveSectionUp(index)" class="move-section-up">↑</button>
           <button @click="moveSectionDown(index)" class="move-section-down">↓</button>

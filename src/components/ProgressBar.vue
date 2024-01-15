@@ -1,5 +1,6 @@
 <script setup>
 
+//Ereignishandler der auf das Scrollen vom Nutzer reagiert
 window.addEventListener('scroll', () => {
     var winScroll = document.body.scrollTop || document.documentElement.scrollTop;
     var height = document.documentElement.scrollHeight - document.documentElement.clientHeight;

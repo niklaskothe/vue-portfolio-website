@@ -2,6 +2,7 @@
   export default {
     data() {
       return {
+         // Liste der Bilder mit IDs und Quellpfaden
         images: [
           { id: 1, src: "/img/arbeit.jpg" },
           { id: 2, src: "/img/baum.jpg" },
@@ -28,6 +29,7 @@
       }
     },
     methods: {
+      // Methode zum Aufteilen der Bilder in Gruppen (in 4 festen Spalten, dyn. Zeilen)
       calculateImageGroups() {
         const groups = [];
         const totalImages = this.images.length;
@@ -39,9 +41,11 @@
         }
         return groups;
       },
+      // Methode zum Hervorheben eines Bildes bei Mouseover
       highlightImage(imageId) {
         this.isHovered = imageId;
       },
+      // Methode zum Löschen eines Bildes
       deleteImage(imageId) {
         const index = this.images.findIndex(image => image.id === imageId);
           if (index !== -1) {
@@ -50,6 +54,7 @@
             this.updateImageGroups();
           }
       },
+      // Methode zum Hinzufügen eines neuen Bildes
       addNewImage(event) {
         const fileList = event.target.files;
         if (fileList.length === 0) return;
@@ -68,6 +73,7 @@
         };
         fileReader.readAsDataURL(fileList[0]);
       },
+      // Methode zum Aktualisieren der Bildgruppen, womit neue Zeilenverhältnisse erstellt werden können
       updateImageGroups() {
         this.$nextTick(() => {
           this.images.sort((a, b) => a.src.localeCompare(b.src));
@@ -80,6 +86,7 @@
 
 <template>
   <div class="column">
+    <!-- Iteration über Bildgruppen und Bilder -->
     <div v-for="(group, groupIndex) in imageGroups" :key="groupIndex" class="row">
       <div v-for="(image, index) in group" :key="image.id" class="image-container" @mouseover="highlightImage(image.id)">
         <img :src="image.src" :alt="image.alt" />
@@ -88,6 +95,7 @@
         </div>
       </div>
     </div>
+    <!-- Bereich zum Hinzufügen neuer Bilder -->
     <div class="row">
       <input type="file" id="fileInput" @change="addNewImage" style="display: none;" />
       <label for="fileInput" class="custom-file-upload">

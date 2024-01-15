@@ -13,7 +13,6 @@ function toTop() {
         <RouterLink @click="toTop" to="/impressum">Impressum</RouterLink>
         <RouterLink @click="toTop" to="/datenschutz">Datenschutz</RouterLink>
     </div>
-    
 </template>
 
 <style>
@@ -28,5 +27,4 @@ function toTop() {
         font-size: large;
     }
 }
-
 </style>

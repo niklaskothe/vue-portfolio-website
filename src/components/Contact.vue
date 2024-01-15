@@ -1,49 +1,49 @@
 <script setup>
-    import { ref } from 'vue'
+import { ref } from 'vue'
 
-    const name = ref('')
-    const email = ref('')
-    const message = ref('')
-    const privacyAgreement = ref(false)
+const name = ref('')
+const email = ref('')
+const message = ref('')
+const privacyAgreement = ref(false)
 
-    function submitForm() {
-        if (privacyAgreement.value) {
-        // TODO: Logik um Formular abzuschicken ?!
-        console.log('Formular abgeschickt:', { name: name.value, email: email.value, message: message.value })
- 
-        name.value = ''
-        email.value = ''
-        message.value = ''
-        privacyAgreement.value = false
-    } else {
-        alert('Bitte bestätigen Sie die Datenschutzerklärung.')
+function submitForm() {
+  //falls Bedingung erfüllt, Daten übernehmen
+  if (privacyAgreement.value) {
+    console.log('Formular abgeschickt:', { name: name.value, email: email.value, message: message.value })
+
+    name.value = ''
+    email.value = ''
+    message.value = ''
+    privacyAgreement.value = false
+  } else {
+    alert('Bitte bestätigen Sie die Datenschutzerklärung.')
   }
 }
 </script>
 
 
 <template>
-    <div class="contact-form">
-      <!--<h2>Kontaktformular</h2>-->
-      <form @submit.prevent="submitForm">
-        <div class="form-group">
-          <input placeholder="Name" type="text" id="name" v-model="name" required>
-        </div>
-        <div class="form-group">
-          <input placeholder="E-Mail" type="email" id="email" v-model="email" required>
-        </div>
-        <div class="nachricht">
-          <textarea placeholder="Nachricht" id="message" v-model="message" rows="5" required></textarea>
-        </div>
-        <div class="datenschutz">
-          <label>
-            <input type="checkbox" v-model="privacyAgreement" required>
-            Ich bestätige die Datenschutzerklärung.
-          </label>
-        </div>
-        <button type="submit" :disabled="!privacyAgreement">Absenden</button>
-      </form>
-    </div>
+  <div class="contact-form">
+    <!--Kontaktformular-->
+    <form @submit.prevent="submitForm">
+      <div class="form-group">
+        <input placeholder="Name" type="text" id="name" v-model="name" required>
+      </div>
+      <div class="form-group">
+        <input placeholder="E-Mail" type="email" id="email" v-model="email" required>
+      </div>
+      <div class="nachricht">
+        <textarea placeholder="Nachricht" id="message" v-model="message" rows="5" required></textarea>
+      </div>
+      <div class="datenschutz">
+        <label>
+          <input type="checkbox" v-model="privacyAgreement" required>
+          Ich bestätige die Datenschutzerklärung.
+        </label>
+      </div>
+      <button type="submit" :disabled="!privacyAgreement">Absenden</button>
+    </form>
+  </div>
 </template>
 
 
@@ -60,11 +60,14 @@ form {
   margin-bottom: 20px;
 }
 
-input.name, input.email, input  {
+input.name,
+input.email,
+input {
   margin-bottom: 16px;
 }
 
-.nachricht, .datenschutz {
+.nachricht,
+.datenschutz {
   grid-column: span 2;
 }
 
@@ -96,20 +99,23 @@ textarea {
     'Helvetica Neue',
     sans-serif;
 }
+
 @media (max-width: 600px) {
   form {
-      display: block; 
+    display: block;
   }
+
   .datenschutz {
     font-size: 12px;
   }
 }
+
 button {
   padding: 10px 20px;
   font-size: 16px;
   border: none;
   border-radius: 4px;
-  background-color: var( --color-highlight);
+  background-color: var(--color-highlight);
   /*color: var(--color-heading);*/
   cursor: pointer;
 }
@@ -117,5 +123,4 @@ button {
 button:disabled {
   background-color: #ccc;
   cursor: not-allowed;
-}
-</style>
+}</style>

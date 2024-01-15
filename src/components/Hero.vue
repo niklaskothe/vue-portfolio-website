@@ -10,7 +10,6 @@ import TiltingCard from './TiltingCard.vue';
                 <button onclick="window.location.href='#section6';">Nimm Kontakt auf!</button>
             </div>
             <div>
-                <!-- <img class="heroImg" src="../../public/img/wandern.jpg" alt="Wandern"> -->
                 <TiltingCard/>
             </div>
         </div>
