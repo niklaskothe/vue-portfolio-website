@@ -6,7 +6,9 @@ Mit der Portfolio-Website hat man die Möglichkeit sich selbst und die eigenen P
 Die Seite ist in mehrere Bereiche gegliedert, welche über die Seitennavigation direkt erreichbar sind. 
 Verschiedene Elemente ermöglichen die Präsentation von Bildern, Skills, 3D-Modellen und Text. Teaser-Karten können auf externe Projektseiten verlinken und es gibt die Möglichkeit per E-Mail Kontakt zum Besitzer der Website aufzunehmen.
 
-Das Ziel ist, alle Elemente anpassbar zu machen. Aktuell kann man in Texte klicken und diese verändern und Bilder hinzufügen/entfernen.
+Alle Inhaltselemente sind anpassbar und in ihrer Reihenfolge auf der Website variabel.
+
+Mann kann beliebig viele neue Elemente anlegen
 
 Die Website wird durch eine Routine beim push automatisch auf http://portfolio.niklaskothe.com/ veröffentlicht.
 
